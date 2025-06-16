@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual sua casa na Academia?</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="imagens/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <h1>Descubra sua Casa na Academia</h1>
+        <form id="quizForm">
+            <!-- Pergunta 1 -->
+            <div class="question">
+                <h2>1. Em uma crise global, qual dessas soluções você implementaria primeiro?</h2>
+                <label><input type="radio" name="q1" value="Carmorya" required> A) Unificação das forças armadas e imposição de ordem.</label>
+                <label><input type="radio" name="q1" value="Virideth"> B) Controle populacional rigoroso com quarentenas e exames obrigatórios.</label>
+                <label><input type="radio" name="q1" value="Hollowmere"> C) Distribuição de alimentos em zonas críticas e racionamento de recursos.</label>
+                <label><input type="radio" name="q1" value="Palevein"> D) Expansão de serviços funerários e preparação emocional das famílias.</label>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="question">
+                <h2>2. Qual dessas figuras você seguiria como líder em tempos sombrios?</h2>
+                <label><input type="radio" name="q2" value="Carmorya" required> A) Um comandante inflexível que fala de honra, glória e conquista.</label>
+                <label><input type="radio" name="q2" value="Virideth"> B) Um estudioso frio, obcecado em entender e conter o invisível.</label>
+                <label><input type="radio" name="q2" value="Hollowmere"> C) Um trabalhador simples que conhece o valor de cada semente e cada pão.</label>
+                <label><input type="radio" name="q2" value="Palevein"> D) Um sacerdote silencioso que aceita o fim como parte da ordem natural.</label>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="question">
+                <h2>3. Em uma história fantástica, quem você seria no grupo principal?</h2>
+                <label><input type="radio" name="q3" value="Carmorya" required> A) O estrategista impiedoso que sempre está pronto para a próxima batalha.</label>
+                <label><input type="radio" name="q3" value="Virideth"> B) O alquimista que mistura poções estranhas e sussurra sobre sintomas.</label>
+                <label><input type="radio" name="q3" value="Hollowmere"> C) O camponês forte que distribui suprimentos e busca manter todos vivos.</label>
+                <label><input type="radio" name="q3" value="Palevein"> D) O observador pálido que não interfere, mas chega quando tudo termina.</label>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div class="question">
+                <h2>4. Qual dessas frases mais combina com seu jeito de ver o mundo?</h2>
+                <label><input type="radio" name="q4" value="Carmorya" required> A) “Conflitos moldam os verdadeiros líderes.”</label>
+                <label><input type="radio" name="q4" value="Virideth"> B) “O perigo real é aquele que não se vê.”</label>
+                <label><input type="radio" name="q4" value="Hollowmere"> C) “A fome nos ensina a valorizar o que importa.”</label>
+                <label><input type="radio" name="q4" value="Palevein"> D) “Tudo tem seu tempo. Até o fim.”</label>
+            </div>
+
+            <!-- Pergunta 5 -->
+            <div class="question">
+                <h2>5. Em um pesadelo recorrente, o que mais te persegue?</h2>
+                <label><input type="radio" name="q5" value="Carmorya" required> A) O som de tambores e cavalos marchando ao longe.</label>
+                <label><input type="radio" name="q5" value="Virideth"> B) O toque gelado de mãos invisíveis e tosses abafadas.</label>
+                <label><input type="radio" name="q5" value="Hollowmere"> C) Estômagos vazios e campos ressecados sem colheita.</label>
+                <label><input type="radio" name="q5" value="Palevein"> D) Um manto escuro e um sino que ecoa em silêncio.</label>
+            </div>
+
+            <button type="submit">Ver minha casa</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('quizForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const data = new FormData(form);
+            const counts = { Carmorya: 0, Virideth: 0, Hollowmere: 0, Palevein: 0 };
+
+            for (const [name, value] of data.entries()) {
+                counts[value]++;
+            }
+
+            const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+            const house = sorted[0][0];
+
+            window.location.href = `resultado.html?casa=${house}`;
+        });
+    </script>
+</body>
+</html>

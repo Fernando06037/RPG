@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - Sua Casa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="imagens/favicon.png">
+</head>
+<body>
+    <div class="container" id="resultado">
+        <h1>Sua Casa é...</h1>
+        <h2 id="casaNome"></h2>
+        <img id="casaImagem" src="" alt="Logo da casa">
+        <p id="descricao"></p>
+        <a href="index.html"><button>Refazer Teste</button></a>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const casa = params.get('casa');
+
+        const casaInfo = {
+            'Carmorya': {
+                nome: 'Casa ℂarmorya (Guerra)',
+                descricao: 'Força, honra e conquista. Você pertence à Casa Carmorya, onde a disciplina, estratégia e o espírito de liderança forjam os verdadeiros mestres da batalha.',
+                imagem: 'imagens/carmorya.png'
+            },
+            'Virideth': {
+                nome: 'Casa 𝕍irideth (Peste)',
+                descricao: 'Sábios e observadores. A Casa Virideth entende que o perigo real muitas vezes é invisível. Seus membros dominam o conhecimento oculto, as doenças e os segredos do invisível.',
+                imagem: 'imagens/virideth.png'
+            },
+            'Hollowmere': {
+                nome: 'Casa ℍollowmere (Fome)',
+                descricao: 'Resiliência, trabalho e solidariedade. Você pertence à Casa Hollowmere, aqueles que sustentam, distribuem e sabem que a sobrevivência vem da coletividade.',
+                imagem: 'imagens/hollowmere.png'
+            },
+            'Palevein': {
+                nome: 'Casa ℙalevein (Morte)',
+                descricao: 'Silêncio, aceitação e transcendência. Você faz parte da Casa Palevein, que observa, compreende e aceita o ciclo da vida e da morte. Mestres do limiar entre os mundos.',
+                imagem: 'imagens/palevein.png'
+            }
+        };
+
+        if (casaInfo[casa]) {
+            document.getElementById('casaNome').innerText = casaInfo[casa].nome;
+            document.getElementById('descricao').innerText = casaInfo[casa].descricao;
+            document.getElementById('casaImagem').src = casaInfo[casa].imagem;
+            document.getElementById('casaImagem').alt = `Logo da ${casaInfo[casa].nome}`;
+        } else {
+            document.getElementById('casaNome').innerText = 'Desconhecida';
+            document.getElementById('descricao').innerText = 'Não foi possível determinar sua casa.';
+        }
+    </script>
+</body>
+</html>
